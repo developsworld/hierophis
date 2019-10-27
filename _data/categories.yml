@@ -1,0 +1,56 @@
+- name: home
+  disable: true
+
+- name: frontend
+  name_kor: FrontEnd
+  desc: html, javascript, jquery, css, view....
+  permalink: /frontend
+  icon: theme/devices/imac.svg
+
+- name: serverside
+  name_kor: ServerSide
+  desc: java, spring ..
+  permalink: /serverside
+  icon: theme/code/code.svg
+  subcategories:
+  - name: java
+    name_kor: JAVA
+    desc: ...
+    permalink: /java
+  - name: spring
+    name_kor: SPRING
+    desc: 스프링 부트 및 이것저것
+    permalink: /spring
+
+- name: free
+  name_kor: FREE
+  desc: 자유게시판 아무거나..
+  permalink: /free
+  icon: theme/communication/write.svg
+
+- name: task
+  name_kor: TASK
+  desc: 공부해 보고 싶은 것들...
+  permalink: /task
+  icon:
+
+- name: bug
+  name_kor: BUG-REPORT
+  desc: 버그 해결 방법 및 요론조론 삽질 들..
+  permalink: /bug
+  icon: theme/tools/shovel.svg
+  subcategories:
+  - name: server
+    name_kor: BUG-SERVER
+    desc: 음..
+    permalink: /server-bug
+  - name: front-bug
+    name_kor: BUG-FRONT
+    desc: 음...
+    permalink: /front-bug
+
+- name: others
+  name_kor: OTHERS
+  desc: 기타등등
+  permalink: /others
+  icon: theme/general/other-2.svg

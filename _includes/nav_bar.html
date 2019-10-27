@@ -1,0 +1,91 @@
+<div class="container">
+    <a class="navbar-brand fade-page" href="index.html">
+        HIEROPHIS
+        <!--<img src="/assets/>img/logos/brand " alt="Leap">-->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <img class="icon navbar-toggler-open" src="/assets/img/icons/interface/menu.svg" alt="menu interface icon" data-inject-svg />
+        <img class="icon navbar-toggler-close" src="/assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
+    </button>
+    <div class="collapse navbar-collapse justify-content-end">
+        <div class="py-2 py-lg-0">
+            <ul class="navbar-nav">
+                {% for category in site.data.categories %}
+                {% if category.disable == nil %}
+                {% if category.subcategories %}
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle  {% if category.permalink == page.url %} active {% endif %}" data-toggle="dropdown-grid" aria-expanded="false" aria-haspopup="true">{{category.name_kor}}</a>
+
+                    <div class="dropdown-menu row">
+                        <div class="col-auto" data-dropdown-content>
+                            <div class="dropdown-grid-menu">
+                                {% for sub in category.subcategories %}
+
+                                {% if sub.disable == nil %}
+                                <a href="{{sub.permalink}}" class="dropdown-item fade-page  {% if sub.permalink == page.url %} active {% endif %}" {% if sub.desc %} data-toggle="tooltip" data-placement='top' title='{{ sub.desc }}' {% endif %}>
+                                    {{sub.name_kor}}
+                                    <!--<span class="badge badge-primary ml-2">New</span>-->
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a href="{{category.permalink}}" class="nav-link  {% if category.permalink == page.url %} active {% endif %}"  aria-expanded="false" aria-haspopup="false">
+                        {{category.name_kor}}</a>
+                </li>
+                {% endif %}
+
+                {% endif %}
+                {% endfor %}
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown-grid" aria-expanded="false" aria-haspopup="true">Tags</a>
+
+
+
+
+                    <div class="dropdown-menu bg-primary-3 text-light border-bottom">
+                        <div class="container py-4" data-dropdown-content>
+                            <div class="row">
+
+
+
+                                {% for tag in site.tags | sort : "name" %}
+                                <!-- tag_name 변수 지정: 태그명은 소문자화(slugize) 한다 -->
+                                {% capture tag_name %}{{tag|first|slugsize}}{% endcapture %}
+                                <!-- font_size 변수 지정 : 태그숫자/전체태그숫자 * 100 + 50 -->
+                                {% capture font_size %}{{tag | last | size | times:2 | divided_by: site.tags.size | round | plus:1 }} {% endcapture %}
+                                <!-- tag_size 변수 지정-->
+                                {% capture tag_size %}{{tag|last|size}}{% endcapture %}
+
+                                {% if font_size > '2' %}
+                                <div class="col-sm col-md-3">
+                                    <a href="/tags/{{tag_name}}">
+                                        <h5>{{tag_name | upcase }} <span class="badge badge-primary-2 m-1">{{tag_size}}</span> </h5>
+                                    </a>
+                                </div>
+                                {% else if font_size> '1' %%}
+                                <div class="col-sm col-md-2 mb-3 mb-lg-0">
+                                    <a href="/tags/{{tag_name}}"> <h6>{{tag_name | upcase }} </h6></a>
+                                </div>
+                                {% else %}
+                                <div class="col-sm col-md-2 mb-3 mb-lg-0">
+                                    <a href="/tags/{{tag_name}}"> {{tag_name | upcase }} </a>
+                                </div>
+                                {% endif %}
+
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="btn btn-primary ml-lg-3">PORTPOLIO</a>
+    </div>
+</div>

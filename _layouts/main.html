@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Leap Bootstrap Theme and HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A corporate Bootstrap theme by Medium Rare">
+    <link href="assets/css/loaders/loader-typing.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="assets/css/theme-desktop-app.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="preload" as="font" href="assets/fonts/Inter-UI-upright.var.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="assets/fonts/Inter-UI.var.woff2" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="loader">
+    <div class="loading-animation"></div>
+</div>
+
+<div class="navbar-container bg-primary-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-3" data-sticky="top">
+        {% include nav_bar.html %}
+    </nav>
+</div>
+
+<section class="bg-primary-3 text-light text-center has-divider header-desktop-app">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9">
+                <h1 class="display-3"> {{site.data.main.title}}</h1>
+                <p class="lead">
+                    {{site.data.main.subtitle}}
+                </p>
+                <div class="d-flex flex-column flex-sm-row justify-content-center mt-4">
+                    <a href="#" class="btn btn-lg btn-primary mx-2 mb-2 mb-sm-0">FEED</a>
+                    <!--<a href="#" class="btn btn-lg btn-outline-primary mx-2">-->
+                        <!--<span><i class="fas fa-feed"></i> PORTPOLIO</span>-->
+                    <!--</a>-->
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-6" data-aos="fade-up" data-delay="100">
+            <div class="col-lg-10">
+                <img src="assets/img/main-pengsu-01.png" alt="Image" class="rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+    <div class="divider">
+        <img src="assets/img/dividers/divider-2.svg" alt="graphical divider" data-inject-svg />
+    </div>
+</section>
+
+<!-- 카테고리 소개 -->
+
+<section class="pt-lg-7 mt-lg-6">
+    <div class="container pt-lg-7">
+        <div class="row mb-4 text-center">
+            <div class="col">
+                <h2 class="h1">Categories</h2>
+            </div>
+        </div>
+        <div class="row text-center">
+            {% for category in site.data.categories %}
+            {% if category.disable == nil %}
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="icon-round bg-primary mx-auto mb-4">
+                    <!--<img class="icon bg-primary" src="assets/img/icons/theme/general/shield-protected.svg" alt="icon" data-inject-svg />-->
+                    {% if category.icon %}
+                    <img class="icon bg-primary" src="assets/img/icons/{{category.icon}}" alt="icon" data-inject-svg />
+
+                    {% else %}
+
+                    <img class="icon bg-primary" src="assets/img/icons/theme/communication/thumbtack.svg" alt="icon" data-inject-svg />
+
+                    {% endif %}
+                </div>
+                <a href="{{category.permalink}}"><h4>{{category.name | upcase}}</h4></a>
+                <p class="lead mx-xl-3">{{category.desc}}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!--최근 포스트-->
+<section class="bg-primary-3 o-hidden has-divider">
+    <div class="container pb-4 text-light">
+        <div class="row justify-content-center text-center mb-6">
+            <div class="col-xl-8 col-lg-9">
+                <h2 class="display-4 mx-xl-6"> Latest Posts</h2>
+                <p class="lead">
+                    <!--Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.-->
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="controls-light arrows-inside highlight-selected mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'>
+
+
+        {% assign posts = site.posts | uniq | limit: 10 %}
+        {% for post in posts %}
+        <div class="carousel-cell col-xl-3 col-lg-4 col-md-5 col-9 pb-1">
+            <div class="card card-body py-1 pr-1">
+                <div class="mb-3 text-right">
+                    {{post.date | date: "%B %-d, %Y" }}
+                </div>
+                <div class="flex-grow-1 pt-md-3 pr-3">
+                    <h4>
+                        {{post.title}}
+                    </h4>
+                </div>
+                <div class=" d-block mt-2 pr-3">
+                    {{ post.description }}
+                </div>
+                <div class="d-block m-0 mt-3 text-right">
+                    {% for tag in post.tags %}
+                    {% if tag != "head" and tag != "home" %}
+                    <a href="/tags/{{tag}}" class="btn-sm btn-primary-3"># {{tag}}</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="divider">
+        <img src="assets/img/dividers/divider-2.svg" alt="graphical divider" data-inject-svg />
+    </div>
+</section>
+
+
+
+<!--head post-->
+{% assign homepost = site.tags.home | limit:2 %}
+{% assign flag = true %}
+{% for post in homepost %}
+
+<section>
+    <div class="container">
+        <div class="row align-items-center justify-content-around o-hidden">
+            <div class="col-md-6 col-lg-5 mb-4 mb-md-0"  data-aos="{% if flag == true %} fade-right {% else %} fade-left {% endif %}">
+                <img src="{{post.image-url}}" alt="Image" class="rounded shadow">
+            </div>
+            <div class="col-lg-5 col-md-6"  data-aos="{% if flag == false %} fade-right {% else %} fade-left {% endif %}">
+                <h3 class="h2">{{post.title}}</h3>
+                <p class="lead">{{post.content | truncate: 200}}</p>
+                <a href="{{post.permalink}}" class="lead hover-arrow"> Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% if flag %}
+{% assign flag = false%}
+{% else %}
+{% assign flag = true%}
+{% endif %}
+
+{% endfor %}
+<!--추천 동영상 -->
+
+
+<section class="bg-primary-3 text-light has-divider jarallax" data-jarallax data-speed="0.2">
+    <div class="divider flip-y">
+        <img src="assets/img/dividers/divider-2.svg" alt="graphical divider" data-inject-svg />
+    </div>
+    <img src="assets/img/desktop-app-3.jpg" alt="Image" class="jarallax-img opacity-20">
+    <div class="container">
+        <div class="row justify-content-center text-center min-vh-50 align-items-center">
+            <div class="col-xl-8 col-lg-9 col-md-10">
+                <a data-fancybox href="{{site.data.main.video.link}}" class="btn btn-xlg btn-primary btn-round mx-auto mb-4" data-aos="fade-up">
+                    <img class="icon" src="assets/img/icons/theme/media/play.svg" alt="play icon" data-inject-svg />
+                </a>
+                <h5 class="display-4"> [추천] {{site.data.main.video.text}}</h5>
+                <p class="lead">
+                    {{site.data.main.video.desc}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include footer.html %}
+{% include includes_js.html %}
+
+</body>
+
+</html>

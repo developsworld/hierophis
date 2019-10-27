@@ -1,0 +1,68 @@
+<section class="min-vh-100  py-5 o-hidden">
+    <div class="container position-relative layer-2">
+        <div class="row justify-content-center mb-md-6">
+            <div class="col-auto">
+                <a href="index.html">
+                     첫화면으로 이동
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-center py-6">
+            <div class="col text-center">
+                <h1 class="display-3"> 포스트를 아직 준비하지 못했어요.. </h1>
+                <div class="lead"> 열심히 쓰고 있습니다.</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" data-countdown-date="{% if page.countdown-date %} {{page.countdown-date}} {% else %} 2019/12/31 {% endif %}" data-detailed>
+                <div data-active class="row text-center">
+                    <div class="col-md">
+                        <div class="card card-body" data-aos="fade-up" data-aos-delay="100">
+                            <span class="h1 text-primary mb-2" data-weeks data-format="%w"></span>
+                            <span class="h6 mb-0" data-weeks-label></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card card-body" data-aos="fade-up" data-aos-delay="200">
+                            <span class="h1 text-primary mb-2" data-days data-format="%d"></span>
+                            <span class="h6 mb-0" data-days-label></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card card-body" data-aos="fade-up" data-aos-delay="300">
+                            <span class="h1 text-primary mb-2" data-hours></span>
+                            <span class="h6 mb-0" data-hours-label></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card card-body" data-aos="fade-up" data-aos-delay="400">
+                            <span class="h1 text-primary mb-2" data-minutes></span>
+                            <span class="h6 mb-0" data-minutes-label></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card card-body" data-aos="fade-up" data-aos-delay="500">
+                            <span class="h1 text-primary mb-2" data-seconds></span>
+                            <span class="h6 mb-0" data-seconds-label></span>
+                        </div>
+                    </div>
+                </div>
+                <div data-elapsed style="display: none;">
+                    <h4>This is the fallback for when the countdown is elapsed</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="decoration-wrapper d-none d-sm-block">
+        <div class="decoration bottom middle-y scale-5">
+            <img class="bg-primary-2-alt" src="assets/img/decorations/deco-blob-9.svg" alt="deco-blob-9 decoration" data-inject-svg />
+        </div>
+        <div class="decoration bottom right scale-5">
+            <img class="bg-primary-3-alt" src="assets/img/decorations/deco-dots-4.svg" alt="deco-dots-4 decoration" data-inject-svg />
+        </div>
+    </div>
+</section>
