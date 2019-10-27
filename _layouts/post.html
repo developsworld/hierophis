@@ -1,15 +1,170 @@
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    {% include includes_head.html %}
+    <meta charset="utf-8">
+    <title> HIEROPHIS :: {{page.title}}</title>
+   {% include includes_head.html %}
+
 </head>
+
 <body>
-
-
-
-<div class="content-wrapper">
-    {{ content }}
+<div class="loader">
+    <div class="loading-animation"></div>
 </div>
 
+<div class="navbar-container ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        {% include nav_bar.html %}
+    </nav>
+</div>
+
+<div class="article-progress" data-sticky="below-nav">
+    <progress class="reading-position" value="0"></progress>
+    <div class="article-progress-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col py-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <div class="text-small text-muted mr-1">Reading:</div>
+                            <div class="text-small">Navigating the complexity of change aversion</div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            {% include share_sns.html %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="pb-0 pb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            {% for category in page.categories %}
+                            <li class="breadcrumb-item">
+                                <a> {{category }}</a>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </nav>
+                    <span class="badge bg-primary-alt text-primary">
+                <img class="icon bg-primary" src="/assets/img/icons/interface/heart.svg" alt="heart interface icon" data-inject-svg />
+                                <span class="disqus-comment-count"  data-disqus-url="{{site.url}}{{page.url}}"></span>
+
+                    </span>
+                </div>
+
+                <h1> {{ page.title }}</h1>
+
+                <div class="d-flex align-items-center">
+                    <a href="#">
+                        <img src="{{site.data.user.avatar}}" alt="Avatar" class="avatar mr-2">
+                    </a>
+                    <div>
+                        <div>by <a href="#">{{site.data.user.name}}</a>
+                        </div>
+                        <div class="text-small text-muted">{{ post.date | date: "%b %-d, %Y"}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="p-0" data-reading-position>
+    <div class="container">
+        {% if page.title-image %}
+        <div class="row justify-content-center position-relative">
+            <div class="col-lg-10 col-xl-8">
+                <img src="{{page.title-image}}" alt="Image" class="rounded">
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-10">
+                <article class="article">
+                    {{page.content}}
+
+                    <!--<p class="lead">-->
+                        <!--Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas-->
+                        <!--sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.-->
+                    <!--</p>-->
+                    <!--<p>-->
+                        <!--Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem-->
+                        <!--ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?-->
+                    <!--</p>-->
+                    <!--<h4>A heading to shift focus</h4>-->
+                    <!--<p>-->
+                        <!--At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia-->
+                        <!--animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas-->
+                        <!--assumenda est, omnis dolor repellendus.-->
+                    <!--</p>-->
+                    <!--<figure>-->
+                        <!--<img src="/assets/img/article-9.jpg" alt="Image" class="rounded">-->
+                        <!--<figcaption>A caption to describe the image</figcaption>-->
+                    <!--</figure>-->
+                    <!--<p>-->
+                        <!--Aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?-->
+                    <!--</p>-->
+                    <!--<blockquote class="bg-primary-alt">-->
+                        <!--<div class="h3 mb-2">“We couldn’t have done it without the hard-working team from Leap.”</div>-->
+                        <!--<span class="text-small text-muted">– Harvey Dent (via Tareq I.)</span>-->
+                        <!--<a href="#" class="btn btn-primary btn-sm">-->
+                            <!--<img class="icon" src="/assets/img/icons/social/twitter.svg" alt="twitter social icon" data-inject-svg />-->
+                            <!--<span>Tweet</span>-->
+                        <!--</a>-->
+                    <!--</blockquote>-->
+                    <!--<p>-->
+                        <!--Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas-->
+                        <!--sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.-->
+                    <!--</p>-->
+                    <!--<h5>A minor heading to summarise</h5>-->
+                    <!--<p>Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>-->
+                    <!--<ul>-->
+                        <!--<li>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam</li>-->
+                        <!--<li>Corporis suscipit laboriosam</li>-->
+                        <!--<li>Aspernatur aut odit aut fugit eos qui ratione</li>-->
+                        <!--<li>Et quasi</li>-->
+                    <!--</ul>-->
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+{% if page.comments %}
+
+
+<section class="has-divider">
+    <div class="container pt-7">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-10">
+                {% include comments.html%}
+            </div>
+        </div>
+    </div>
+    <div class="divider">
+        <img class="bg-primary-alt" src="/assets/img/dividers/divider-1.svg" alt="divider graphic" data-inject-svg />
+    </div>
+</section>
+
+{% endif %}
+
+
+
+{% include footer.html %}
+
+{% include includes_js.html %}
 
 </body>
+
 </html>
