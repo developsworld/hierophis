@@ -23,8 +23,8 @@ description:
   아나콘다가 되고 싶은 실뱀의 고군분투 개발자 성장 로그
 #baseurl: "" # the subpath of your site, e.g. /blog
 #url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site, e.g. http://example.com
-url: ""
-baseurl: ""
+url: "hierophis.github.io"
+baseurl: "hierophis.github.io"
 permalink: date
 
 exclude:             ["Gemfile", "Gemfile.lock", "pages", "scss", "js", "includes", "layouts",
