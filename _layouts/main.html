@@ -32,7 +32,7 @@
                     {{site.data.main.subtitle}}
                 </p>
                 <div class="d-flex flex-column flex-sm-row justify-content-center mt-4">
-                    <a href="#" class="btn btn-lg btn-primary mx-2 mb-2 mb-sm-0">FEED</a>
+                    <a href="#" class="btn btn-lg btn-primary mx-2 mb-2 mb-sm-0">FEED </a>
                     <!--<a href="#" class="btn btn-lg btn-outline-primary mx-2">-->
                         <!--<span><i class="fas fa-feed"></i> PORTPOLIO</span>-->
                     <!--</a>-->
@@ -86,35 +86,25 @@
 
 
 <!--최근 포스트-->
+{% assign posts = site.posts | uniq | limit: 2 %}
+
 
 {% include latest.html %}
 
 
 <!--head post-->
-{% assign homepost = site.tags.home | limit:2 %}
+{% assign homepost = site.tags.home %}
 {% assign flag = true %}
-{% for post in homepost %}
+{% for post in homepost limit: 2 %}
 
 <section>
-    <div class="container">
-        <div class="row align-items-center justify-content-around o-hidden">
-            <div class="col-md-6 col-lg-5 mb-4 mb-md-0"  data-aos="{% if flag == true %} fade-right {% else %} fade-left {% endif %}">
-                <img src="{{post.image-url}}" alt="Image" class="rounded shadow">
-            </div>
-            <div class="col-lg-5 col-md-6"  data-aos="{% if flag == false %} fade-right {% else %} fade-left {% endif %}">
-                <h3 class="h2">{{post.title}}</h3>
-                <p class="lead">{{post.content | truncate: 200}}</p>
-                <a href="{{post.permalink}}" class="lead hover-arrow"> Details</a>
-            </div>
-        </div>
-    </div>
+   {% if flag %}
+   	{% include headpost_left.html %}
+   {% else %}
+   	{% include headpost_right.html %}
+   {% endif %}
 </section>
-
-{% if flag %}
-{% assign flag = false%}
-{% else %}
-{% assign flag = true%}
-{% endif %}
+{% assign flag = false %}
 
 {% endfor %}
 <!--추천 동영상 -->

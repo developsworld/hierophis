@@ -23,14 +23,20 @@ description:
   아나콘다가 되고 싶은 실뱀의 고군분투 개발자 성장 로그
 #baseurl: "" # the subpath of your site, e.g. /blog
 #url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site, e.g. http://example.com
-url: "hierophis.github.io"
-baseurl: "hierophis.github.io"
+url: "developswrold.github.io"
+baseurl: ""
 permalink: date
 
 exclude:             ["Gemfile", "Gemfile.lock", "pages", "scss", "js", "includes", "layouts",
                       "copydeps.yml", "Gemfile*","gulpfile.js", "package.json", "package-lock.json",
                       "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
-paginate: 5
+pagination:
+  enabled: true
+  per_page: 2
+  limit: 0
+  permalink: ':num'
+  sort_field: "date"
+  sort_reverse: true
 
 # Build settings
 #theme: minima

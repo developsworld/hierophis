@@ -1,5 +1,5 @@
 {
-  "name": "hierophis.github.io",
+  "name": "developsworld.github.io",
   "version": "1.0.0",
   "main": "gulpfile.js",
   "scripts": {
@@ -7,11 +7,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/developsworld/hierophis.github.io.git"
+    "url": "git+https://github.com/developsworld/developsworld.github.io.git"
   },
   "author": "",
   "bugs": {
-    "url": "https://github.com/developsworld/hierophis.github.io/issues"
+    "url": "https://github.com/developsworld/developsworld.github.io/issues"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
@@ -22,7 +22,7 @@
     }
   },
   "license": "SEE LICENSE IN LICENSE.md",
-  "homepage": "https://github.com/developsworld/hierophis.github.io#readme",
+  "homepage": "https://github.com/developsworld/developsworld.github.io#readme",
   "dependencies": {
     "@fancyapps/fancybox": "3.5.2",
     "@tanem/svg-injector": "~8.0.12",
@@ -75,5 +75,5 @@
     "rollup-plugin-uglify": "~6.0.1",
     "yamljs": "~0.3.0"
   },
-  "description": ""
+  "description": "made by suyeon you "
 }
